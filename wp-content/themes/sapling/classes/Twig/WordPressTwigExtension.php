@@ -104,12 +104,11 @@ class WordPressTwigExtension extends Twig_Extension
         }, []);
 
         $functions[] = new \Twig_SimpleFunction('nav_menu', function(array $args = []){
-            ob_start();
-            wp_nav_menu();
-            return ob_get_clean();
+            $args['echo'] = false;
+            return wp_nav_menu($args);
         }, []);
 
-        $functions[] = new \Twig_SimpleFunction('nav_menu', function($menu, array $args = []){
+        $functions[] = new \Twig_SimpleFunction('wp_get_nav_menu_items', function($menu, array $args = []){
             return wp_get_nav_menu_items($menu, $args);
         }, []);
 
