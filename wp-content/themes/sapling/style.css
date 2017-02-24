@@ -1,0 +1,14 @@
+/*
+Theme Name: Sapling
+Theme URI: https://sapling.kodama.design
+Author: Robert Parker
+Author URI: https://kodama.design
+Description: Starter theme built with Twig and configured with YAML
+Version: 1.0
+License: MIT
+Text Domain: sapling
+
+Do not add styles to this file. Instead add styles to the app.scss file in the web/scss directory and compile with gulp.
+The compiled css siles will be placed in web/stylesheets.
+*/
+

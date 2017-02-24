@@ -1,0 +1,22 @@
+{
+    "name": "kodama/sapling",
+    "description": "WordPress Starter theme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Robert Parker",
+            "email": "rparker@kodama.design"
+        }
+    ],
+    "require": {
+        "twig/twig": "^2.1",
+        "symfony/yaml": "^3.2",
+        "symfony/dependency-injection": "^3.2",
+        "symfony/config": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sapling\\": "classes/"
+        }
+    }
+}

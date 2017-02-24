@@ -1,0 +1,26 @@
+imports:
+  - { resource: "config.wordpress.yml" }
+
+parameters:
+  twig.paths:
+    - "%theme_dir%/views"
+  twig.options:
+    debug: "%WP_DEBUG%"
+    cache: false
+    auto_reload: true
+    strict_variables: "%WP_DEBUG%"
+
+services:
+  twig.loader:
+    class: "Twig_Loader_Filesystem"
+    arguments: ["%twig.paths%"]
+  twig.debug:
+    class: "Twig_Extension_Debug"
+  twig.wordpress:
+    class: "Sapling\\Twig\\WordPressTwigExtension"
+  twig.environment:
+      class: "Twig_Environment"
+      arguments: ["@twig.loader", "%twig.options%"]
+      calls:
+        - ["addExtension", ["@twig.debug"]]
+        - ["addExtension", ["@twig.wordpress"]]

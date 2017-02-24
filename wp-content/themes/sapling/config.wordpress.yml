@@ -1,0 +1,35 @@
+parameters:
+  remove_stylesheets: []
+  remove_scripts:
+    - "jquery"
+  stylesheets:
+    - { name: "sapling", source: "%theme_uri%/web/stylesheets/app.css", requires: [], version: false, media: "all" }
+  scripts:
+    - { name: "jquery", source: "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js", requires: [], version: "3.1.1", footer: true }
+    - { name: "sapling", source: "%theme_uri%/web/jsmin/app.min.js", requires: ['jquery'], version: false, footer: true }
+  image_sizes:
+    - { name: "hero", width: 1920, height: 1080, crop: true, add_filter: true, filter_name: "Hero" }
+  remove_theme_supports: []
+  theme_supports:
+    - "post-thumbnails"
+    - "html5"
+  remove_menus: []
+  menus:
+    primary: "Primary Menu"
+  post_types:
+  remove_post_type_support:
+  post_type_support:
+  remove_sidebars: []
+  sidebars:
+    -
+      name: "name"
+      id: "unique-id"
+      description: ""
+      class: ""
+      before_widget: "<li id='%1$s' class='widget %2$s'>"
+      after_widget: "</li>"
+      before_title: "<h2 class='widgettitle'>"
+      after_title: "</h2>"
+  remove_theme_mods: []
+  theme_mods: []
+  remove_oembed_provider: []
