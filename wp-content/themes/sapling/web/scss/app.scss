@@ -1,4 +1,4 @@
-$fa-font-path: "web/libs/font-awesome/fonts";
+$fa-font-path: "../libs/font-awesome/fonts";
 @import "slick.scss";
 @import "slick-theme.scss";
 @import "font-awesome";
@@ -23,4 +23,72 @@ $fa-font-path: "web/libs/font-awesome/fonts";
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+// foundation accordion menu
+.is-accordion-submenu-parent > a::after {
+  content: "\f067";
+  font-family: "FontAwesome";
+  border: none;
+  margin-top: rem-calc(-8px);
+  margin-right: $global-padding;
+}
+.is-accordion-submenu-parent[aria-expanded="true"] > a::after {
+  content: "\f068";
+  transform: rotate(0deg);
+  transform-origin: 0 0;
+}
+
+// menu
+#left-bar {
+  background: $black;
+  color: $medium-gray;
+  #primary-nav {
+    a {
+      display: block;
+      border-bottom: 1px solid $white;
+      &:hover {
+        .nav {
+          color: $anchor-color-hover;
+        }
+      }
+      .nav, .description {
+        display: block;
+        width: 100%;
+        transition: color 250ms linear;
+      }
+      .nav {
+        font-weight: $global-weight-bold;
+        text-transform: uppercase;
+        color: $white;
+        font-size: rem-calc(16px);
+        @include breakpoint(medium) {
+          font-size: rem-calc(22px);
+        }
+      }
+      .description {
+        color: $medium-gray;
+        font-size: rem-calc(12px);
+        @include breakpoint(medium) {
+          font-size: rem-calc(14px);
+        }
+      }
+    }
+    .is-accordion-submenu-parent > a::after {
+      color: $white;
+    }
+    .is-accordion-submenu-parent > a:hover::after {
+      color: $anchor-color-hover;
+    }
+    .nested.submenu {
+      background-color: $dark-gray;
+      margin: 0;
+      .nav {
+        font-size: rem-calc(14px);
+        @include breakpoint(medium) {
+          font-size: rem-calc(16px);
+        }
+      }
+    }
+  }
 }
