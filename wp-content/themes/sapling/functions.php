@@ -2,6 +2,7 @@
 require_once __DIR__.'/vendor/autoload.php';
 global $sapling;
 
+use Sapling\Menu\CustomMenuWalker;
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -51,6 +52,17 @@ add_action('after_setup_theme', function() use($sapling) {
     foreach ($sapling->getParameter('theme_mods') as $mod_name => $mod_value) {
         set_theme_mod($mod_name, $mod_value);
     }
+
+    $primary_menu = wp_nav_menu([
+        "walker" => new CustomMenuWalker(),
+        "menu_class" => "vertical menu",
+        "items_wrap" => '<ul id="%1$s" class="%2$s" data-accordion-menu>%3$s</ul>',
+        "theme_location" => "primary",
+        "depth" => 2,
+        "echo" => false,
+    ]);
+    $twig = $sapling->get('twig.environment');
+    $twig->addGlobal('primary_menu', $primary_menu);
 });
 
 add_action('init', function() use($sapling) {
