@@ -9,7 +9,7 @@ parameters:
     cache: false
     auto_reload: true
     strict_variables: "%WP_DEBUG%"
-
+    autoescape: false
 services:
   twig.loader:
     class: "Twig_Loader_Filesystem"
