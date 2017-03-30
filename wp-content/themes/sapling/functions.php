@@ -146,19 +146,27 @@ add_action('wp_enqueue_scripts', function() use($sapling) {
 add_action('acf/init', function(){
     $builder = new \Sapling\ACF\ACFBuilder();
     $builder->addOptionsPage('Theme Settings', 'Theme Settings', 'theme-settings', 'manage_options');
-    $builder->addLocalFieldGroup('settings', 'Sample', [], [[[
+
+    // navigation section in theme options
+    $builder->addLocalFieldGroup('settings_navigation', 'Navigation', [], [[[
         'param' => 'options_page',
         'operator' => '==',
         'value' => 'theme-settings',
-    ]]]);
+    ]]], 0);
+
     $headshot = new \Sapling\ACF\Fields\Image('headshot', 'Head Shot', 'headshot');
     $headshot->setRequired(true);
+    $headshot->setWrapper([
+            'width' => '50',
+            'class' => '',
+            'id' => '',
+    ]);
 
     $twitter = new \Sapling\ACF\Fields\Text('twitter', 'Twitter', 'twitter');
     $twitter->setRequired(true);
     $twitter->setDefault('bensernagrey');
     $twitter->setWrapper([
-        'width' => '50',
+        'width' => '25',
         'class' => '',
         'id' => '',
     ]);
@@ -167,12 +175,36 @@ add_action('acf/init', function(){
     $email->setRequired(true);
     $email->setDefault('ben@bensernagrey.com');
     $email->setWrapper([
-        'width' => '50',
+        'width' => '25',
         'class' => '',
         'id' => '',
     ]);
     
-    $headshot->register('settings');
-    $twitter->register('settings');
-    $email->register('settings');
+    $headshot->register('settings_navigation');
+    $twitter->register('settings_navigation');
+    $email->register('settings_navigation');
+
+    // header section in theme options
+    $builder->addLocalFieldGroup('settings_header', 'Header', [], [[[
+        'param' => 'options_page',
+        'operator' => '==',
+        'value' => 'theme-settings',
+    ]]], 1);
+
+    $header = new \Sapling\ACF\Fields\Image('header', 'Home Page header', 'header');
+    $header->setRequired(true);
+    $header->setPreview("hero");
+    
+    $header->register('settings_header');
+
+    // footer section in theme options
+    $builder->addLocalFieldGroup('settings_footer', 'Footer', [], [[[
+        'param' => 'options_page',
+        'operator' => '==',
+        'value' => 'theme-settings',
+    ]]], 2);
+
+    $footer = new \Sapling\ACF\Fields\Number('contact_form_id', 'Contact Form ID', 'contact_form_id');
+    $footer->setRequired(true);
+    $footer->register('settings_footer');
 });

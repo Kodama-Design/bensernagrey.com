@@ -9,7 +9,7 @@ parameters:
     - { name: "jquery", source: "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js", requires: [], version: "3.1.1", footer: true }
     - { name: "sapling", source: "%theme_uri%/web/jsmin/app.min.js", requires: ['jquery'], version: false, footer: true }
   image_sizes:
-    - { name: "hero", width: 1920, height: 1080, crop: true, add_filter: true, filter_name: "Hero" }
+    - { name: "hero", width: 900, height: 300, crop: true, add_filter: true, filter_name: "Hero" }
   remove_theme_supports: []
   theme_supports:
     - "post-thumbnails"
