@@ -61,8 +61,17 @@ add_action('after_setup_theme', function() use($sapling) {
         "depth" => 2,
         "echo" => false,
     ]);
+    $footer_menu = wp_nav_menu([
+        "menu_class" => "vertical medium-horizontal menu align-center",
+        "items_wrap" => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+        "theme_location" => "footer",
+        "depth" => 1,
+        "echo" => false,
+    ]);
     $twig = $sapling->get('twig.environment');
     $twig->addGlobal('primary_menu', $primary_menu);
+    $twig->addGlobal('footer_menu', $footer_menu);
+    $twig->addGlobal('contact_form', gravity_form(1, false, false, false, null, false, 49, false));
 });
 
 add_action('init', function() use($sapling) {
@@ -194,7 +203,7 @@ add_action('acf/init', function(){
     $header = new \Sapling\ACF\Fields\Image('header', 'Home Page header', 'header');
     $header->setRequired(true);
     $header->setPreview("hero");
-    
+
     $header->register('settings_header');
 
     // footer section in theme options

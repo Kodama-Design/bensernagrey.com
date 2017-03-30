@@ -1,0 +1,22 @@
+.copyright {
+  padding: $global-padding 0;
+  background-color: $black;
+  color: $light-gray;
+  @include breakpoint(medium) {
+    text-align: center;
+  }
+  > .row {
+    margin: 0 auto;
+  }
+  h2 {
+    text-transform: uppercase;
+  }
+  .menu {
+    @include breakpoint(small only) {
+      a {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}

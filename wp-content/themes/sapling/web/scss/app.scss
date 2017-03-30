@@ -5,6 +5,11 @@ $fa-font-path: "../libs/font-awesome/fonts";
 @import "settings";
 @import "foundation";
 @include foundation-everything(true);
+@import "profile";
+@import "primary-nav";
+@import "social-nav";
+@import "contact";
+@import "copyright";
 
 .alignleft {
   display: inline;
@@ -39,82 +44,17 @@ $fa-font-path: "../libs/font-awesome/fonts";
   transform-origin: 0 0;
 }
 
-// menu
-#profile {
-  margin-bottom: $global-margin;
-  img {
-    margin: $global-margin;
-  }
-  h2 {
-    color: $white;
-    line-height:1;
+// gravity forms
+.gform_wrapper {
+  .gform_fields {
+    @extend .row;
+    list-style-type: none;
     margin: 0;
   }
 }
+
+// menu
 #left-bar {
   background: $black;
   color: $medium-gray;
-  .menu {
-    display: block;
-  }
-  #primary-nav {
-    border-top: 1px solid $white;
-    a {
-      display: block;
-      border-bottom: 1px solid $white;
-      padding: $global-padding;
-      &:hover {
-        .nav {
-          color: $anchor-color-hover;
-        }
-      }
-      .nav, .description {
-        display: block;
-        width: 100%;
-        transition: color 250ms linear;
-      }
-      .nav {
-        font-weight: $global-weight-bold;
-        text-transform: uppercase;
-        color: $white;
-        font-size: rem-calc(16px);
-        @include breakpoint(medium) {
-          font-size: rem-calc(22px);
-        }
-      }
-      .description {
-        color: $medium-gray;
-        font-size: rem-calc(12px);
-        @include breakpoint(medium) {
-          font-size: rem-calc(14px);
-        }
-      }
-    }
-    .is-accordion-submenu-parent > a::after {
-      color: $white;
-    }
-    .is-accordion-submenu-parent > a:hover::after {
-      color: $anchor-color-hover;
-    }
-    .nested.submenu {
-      background-color: $dark-gray;
-      margin: 0;
-      .nav {
-        font-size: rem-calc(14px);
-        @include breakpoint(medium) {
-          font-size: rem-calc(16px);
-        }
-      }
-    }
-  }
-  #social-nav {
-    padding: $global-padding 0;
-    a {
-      display: block;
-      color: $white;
-      &:hover {
-        color: $anchor-color-hover;
-      }
-    }
-  }
 }

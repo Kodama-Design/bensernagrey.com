@@ -17,6 +17,7 @@ parameters:
   remove_menus: []
   menus:
     primary: "Primary Menu"
+    footer: "Footer Menu"
   post_types: []
   remove_post_type_support: []
   post_type_support: []

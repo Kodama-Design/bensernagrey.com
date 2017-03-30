@@ -1,0 +1,10 @@
+#social-nav {
+  padding: $global-padding 0;
+  a {
+    display: block;
+    color: $white;
+    &:hover {
+      color: $anchor-color-hover;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.contact {
+  color: $white;
+  background-color: $dark-gray;
+  > .row {
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: rem-calc(32px);
+  }
+  label {
+    color: $white;
+  }
+}
