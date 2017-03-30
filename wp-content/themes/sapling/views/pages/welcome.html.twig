@@ -31,9 +31,12 @@
         </div>
     </div>
     <div class="columns" id="center-bar">
+        <header class="hero">
+            <img src="{{ get_field("header", "option").sizes.hero }}" alt="{{ get_field("header", "option").title }}" />
+        </header>
         <footer class="contact">
-            <div class="row">
-                <div class="column">
+            <div class="row align-center">
+                <div class="small-12 medium-10 large-8 columns">
                     <h2>Contact</h2>
                     {{ contact_form }}
                 </div>

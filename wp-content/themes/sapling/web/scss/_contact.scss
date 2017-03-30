@@ -1,6 +1,7 @@
 .contact {
   color: $white;
   background-color: $dark-gray;
+  padding: $global-padding 0;
   > .row {
     margin: 0 auto;
   }
@@ -9,5 +10,11 @@
   }
   label {
     color: $white;
+  }
+  .gform_footer {
+    text-align: center;
+  }
+  .gform_button {
+    text-transform: uppercase;
   }
 }
