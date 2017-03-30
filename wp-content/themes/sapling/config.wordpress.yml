@@ -3,7 +3,8 @@ parameters:
   remove_scripts:
     - "jquery"
   stylesheets:
-    - { name: "sapling", source: "%theme_uri%/web/stylesheets/app.css", requires: [], version: false, media: "all" }
+    - { name: "google", source: "https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i", requires: [], version: false, media: "all" }
+    - { name: "sapling", source: "%theme_uri%/web/stylesheets/app.css", requires: ["google"], version: false, media: "all" }
   scripts:
     - { name: "jquery", source: "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js", requires: [], version: "3.1.1", footer: true }
     - { name: "sapling", source: "%theme_uri%/web/jsmin/app.min.js", requires: ['jquery'], version: false, footer: true }

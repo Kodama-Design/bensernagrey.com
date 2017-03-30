@@ -145,11 +145,34 @@ add_action('wp_enqueue_scripts', function() use($sapling) {
 
 add_action('acf/init', function(){
     $builder = new \Sapling\ACF\ACFBuilder();
-    $builder->addLocalFieldGroup('sample', 'Sample', [], [[[
-        'param' => 'post_type',
+    $builder->addOptionsPage('Theme Settings', 'Theme Settings', 'theme-settings', 'manage_options');
+    $builder->addLocalFieldGroup('settings', 'Sample', [], [[[
+        'param' => 'options_page',
         'operator' => '==',
-        'value' => 'post',
+        'value' => 'theme-settings',
     ]]]);
-    $textfield = new \Sapling\ACF\Fields\Text('text', 'text', 'text');
-    $textfield->register('sample');
+    $headshot = new \Sapling\ACF\Fields\Image('headshot', 'Head Shot', 'headshot');
+    $headshot->setRequired(true);
+
+    $twitter = new \Sapling\ACF\Fields\Text('twitter', 'Twitter', 'twitter');
+    $twitter->setRequired(true);
+    $twitter->setDefault('bensernagrey');
+    $twitter->setWrapper([
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+    ]);
+    
+    $email = new \Sapling\ACF\Fields\Email('email', 'Email', 'email');
+    $email->setRequired(true);
+    $email->setDefault('ben@bensernagrey.com');
+    $email->setWrapper([
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+    ]);
+    
+    $headshot->register('settings');
+    $twitter->register('settings');
+    $email->register('settings');
 });

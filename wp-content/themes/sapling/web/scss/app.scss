@@ -40,13 +40,29 @@ $fa-font-path: "../libs/font-awesome/fonts";
 }
 
 // menu
+#profile {
+  margin-bottom: $global-margin;
+  img {
+    margin: $global-margin;
+  }
+  h2 {
+    color: $white;
+    line-height:1;
+    margin: 0;
+  }
+}
 #left-bar {
   background: $black;
   color: $medium-gray;
+  .menu {
+    display: block;
+  }
   #primary-nav {
+    border-top: 1px solid $white;
     a {
       display: block;
       border-bottom: 1px solid $white;
+      padding: $global-padding;
       &:hover {
         .nav {
           color: $anchor-color-hover;
@@ -88,6 +104,16 @@ $fa-font-path: "../libs/font-awesome/fonts";
         @include breakpoint(medium) {
           font-size: rem-calc(16px);
         }
+      }
+    }
+  }
+  #social-nav {
+    padding: $global-padding 0;
+    a {
+      display: block;
+      color: $white;
+      &:hover {
+        color: $anchor-color-hover;
       }
     }
   }
