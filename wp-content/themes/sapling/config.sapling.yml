@@ -18,9 +18,12 @@ services:
     class: "Twig_Extension_Debug"
   twig.wordpress:
     class: "Sapling\\Twig\\WordPressTwigExtension"
+  twig.acf:
+    class: "Sapling\\Twig\\ACFTwigExtension"
   twig.environment:
       class: "Twig_Environment"
       arguments: ["@twig.loader", "%twig.options%"]
       calls:
         - ["addExtension", ["@twig.debug"]]
         - ["addExtension", ["@twig.wordpress"]]
+        - ["addExtension", ["@twig.acf"]]

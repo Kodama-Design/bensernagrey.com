@@ -8,10 +8,14 @@ class WordPressTwigExtension extends Twig_Extension
     public function getFunctions()
     {
         $functions = [];
+
+        $functions[] = new \Twig_SimpleFunction('bloginfo', function($show = '', $filter = 'raw'){
+            return get_bloginfo($show, $filter);
+        }, []);
+
         $functions[] = new \Twig_SimpleFunction('body_class', function($classes = ''){
             return body_class($classes);
         }, []);
-
 
         $functions[] = new \Twig_SimpleFunction('dynamic_sidebar', function($index = 1){
             ob_start();
@@ -203,6 +207,18 @@ class WordPressTwigExtension extends Twig_Extension
 
         $functions[] = new \Twig_SimpleFunction('has_post_format', function($format = array(), $post = null){
             return has_post_format($format, $post);
+        }, []);
+
+        $functions[] = new \Twig_SimpleFunction('header', function(){
+            ob_start();
+            wp_head();
+            return ob_get_clean();
+        }, []);
+
+        $functions[] = new \Twig_SimpleFunction('footer', function(){
+            ob_start();
+            wp_footer();
+            return ob_get_clean();
         }, []);
 
         return $functions;
