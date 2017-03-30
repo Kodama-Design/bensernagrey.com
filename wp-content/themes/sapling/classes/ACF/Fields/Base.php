@@ -119,7 +119,7 @@ abstract class Base
         return $this->wrapper;
     }
 
-    public function setWrapper($wrapper)
+    public function setWrapper(array $wrapper)
     {
         $this->wrapper = $wrapper;
         return $this;
