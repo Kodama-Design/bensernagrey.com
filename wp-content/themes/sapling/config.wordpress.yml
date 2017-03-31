@@ -32,7 +32,7 @@ parameters:
       labels: {name: "Sheet Music", singular_name: "Sheet Music"}
       menu_position: 6
       menu_icon: "dashicons-playlist-audio"
-      supports: ["title", "editor", "thumbnail"]
+      supports: ["title", "editor"]
     recording:
       public: true
       has_archive: true

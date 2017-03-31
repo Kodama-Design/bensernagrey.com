@@ -106,7 +106,15 @@ add_action('init', function() use($sapling) {
         'album',
         'recording',
         [
-            'label' => __( 'Album' ),
+            'label' => __('Album'),
+        ]
+    );
+
+    register_taxonomy(
+        'instrumentation',
+        'sheet_music',
+        [
+            'label' => __('Instrumentation'),
         ]
     );
 });
@@ -257,6 +265,34 @@ add_action('acf/init', function(){
         'id' => '',
     ]);
     $album->register('recordings');
+
+    // Sheet music
+    $builder->addLocalFieldGroup('sheet_music', 'Sheet Music', [], [[[
+        'param' => 'post_type',
+        'operator' => '==',
+        'value' => 'sheet_music',
+    ]]], 0);
+
+    $instrumentation = new \Sapling\ACF\Fields\Taxonomy('sheet_instrumentation', 'Instrumentation', 'sheet_instrumentation');
+    $instrumentation->setTaxonomy('album');
+    $instrumentation->setFieldType('select');
+    $instrumentation->setFormat('object');
+    $instrumentation->setAddTerm(true);
+    $instrumentation->setWrapper([
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+    ]);
+    $instrumentation->register('sheet_music');
+
+    $url = new \Sapling\ACF\Fields\URL('sheet_url', 'Track number', 'sheet_url');
+    $url->setRequired(true);
+    $url->setWrapper([
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+    ]);
+    $url->register('sheet_music');
 });
 
 add_filter('excerpt_more', function ($more) {
