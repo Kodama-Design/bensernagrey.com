@@ -1,0 +1,18 @@
+.posts-teaser {
+  padding: $global-padding*2 0;
+  h2 {
+    color: $anchor-color;
+    font-size: rem-calc(32px);
+  }
+  h3 {
+    font-size: rem-calc(26px);
+    font-weight: $global-weight-normal;
+    margin-bottom: 0;
+  }
+  .row {
+    margin: 0 auto;
+  }
+  .post-teaser {
+    margin-bottom: $global-margin;
+  }
+}

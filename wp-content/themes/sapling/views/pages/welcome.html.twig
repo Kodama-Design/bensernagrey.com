@@ -34,6 +34,23 @@
         <header class="hero">
             <img src="{{ get_field("header", "option").sizes.hero }}" alt="{{ get_field("header", "option").title }}" />
         </header>
+        <section class="posts-teaser">
+            <div class="row">
+                <div class="small-12 columns">
+                    <h2>Blog</h2>
+                </div>
+            </div>
+            {% for post in posts %}
+                <div class="post-teaser">
+                    <div class="row">
+                        <div class="small-12 columns">
+                            <h3>{{ post.title }}</h3>
+                            {{ post.excerpt }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
         <footer class="contact">
             <div class="row align-center">
                 <div class="small-12 medium-10 large-8 columns">

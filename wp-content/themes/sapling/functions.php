@@ -217,3 +217,8 @@ add_action('acf/init', function(){
     $footer->setRequired(true);
     $footer->register('settings_footer');
 });
+
+add_filter('excerpt_more', function ($more) {
+    global $post;
+    return '... <a href="'. get_permalink($post->ID) . '"> Read More</a>';
+});
