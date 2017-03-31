@@ -39,7 +39,7 @@ parameters:
       labels: {name: "Recordings", singular_name: "Recording"}
       menu_position: 6
       menu_icon: "dashicons-format-audio"
-      supports: ["title", "editor", "thumbnail"]
+      supports: ["title", "editor"]
   remove_post_type_support: []
   post_type_support: []
   remove_sidebars: []

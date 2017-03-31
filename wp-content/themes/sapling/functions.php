@@ -101,6 +101,14 @@ add_action('init', function() use($sapling) {
     foreach ($sapling->getParameter('post_type_support') as $post_type => $args) {
         add_post_type_support($post_type, $args);
     }
+
+    register_taxonomy(
+        'album',
+        'recording',
+        [
+            'label' => __( 'Album' ),
+        ]
+    );
 });
 
 add_action('widgets_init', function() use($sapling) {
@@ -216,6 +224,39 @@ add_action('acf/init', function(){
     $footer = new \Sapling\ACF\Fields\Number('contact_form_id', 'Contact Form ID', 'contact_form_id');
     $footer->setRequired(true);
     $footer->register('settings_footer');
+
+    // Recordings
+    $builder->addLocalFieldGroup('recordings', 'Recording', [], [[[
+        'param' => 'post_type',
+        'operator' => '==',
+        'value' => 'recording',
+    ]]], 0);
+
+    $mp3 = new \Sapling\ACF\Fields\File('recording_mp3', 'MP3', 'recording_mp3');
+    $mp3->setRequired(true);
+    $mp3->setMimeTypes(["mp3"]);
+    $mp3->register('recordings');
+
+    $track = new \Sapling\ACF\Fields\Number('recording_track', 'Track number', 'recording_track');
+    $track->setRequired(true);
+    $track->setWrapper([
+        'width' => '25',
+        'class' => '',
+        'id' => '',
+    ]);
+    $track->register('recordings');
+
+    $album = new \Sapling\ACF\Fields\Taxonomy('recording_album', 'album', 'recording_album');
+    $album->setTaxonomy('album');
+    $album->setFieldType('select');
+    $album->setFormat('object');
+    $album->setAddTerm(true);
+    $album->setWrapper([
+        'width' => '75',
+        'class' => '',
+        'id' => '',
+    ]);
+    $album->register('recordings');
 });
 
 add_filter('excerpt_more', function ($more) {

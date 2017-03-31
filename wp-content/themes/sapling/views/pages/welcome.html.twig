@@ -34,6 +34,24 @@
         <header class="hero">
             <img src="{{ get_field("header", "option").sizes.hero }}" alt="{{ get_field("header", "option").title }}" />
         </header>
+        <section class="recordings-preview">
+            <div class="row">
+                <div class="small-12 columns">
+                    <h2>Recordings</h2>
+                </div>
+            </div>
+            <div class="row small-up-1 medium-up-2">
+                {% for recording in recordings%}
+                    <div class="column">
+                        <h3>{{ recording.title }}</h3>
+                        <audio controls>
+                            <source src="{{ recording.file }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
         <section class="posts-teaser">
             <div class="row">
                 <div class="small-12 columns">
