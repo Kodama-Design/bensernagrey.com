@@ -31,13 +31,14 @@ class ACFBuilder
         ));
     }
 
-    public function addLocalFieldGroup($key, $title, array $fields = [], array $locations = [], $order = 0)
+    public function addLocalFieldGroup($key, $title, array $fields = [], array $locations = [], $hide = [], $order = 0)
     {
         acf_add_local_field_group(array(
             'key' => $key,
             'title' => $title,
             'fields' => $fields,
             'location' => $locations,
+            'hide_on_screen' => $hide,
             'menu_order' => $order,
         ));
         return $key;

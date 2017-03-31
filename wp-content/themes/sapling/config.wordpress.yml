@@ -26,6 +26,7 @@ parameters:
       menu_position: 6
       menu_icon: "dashicons-portfolio"
       supports: ["title", "editor", "thumbnail"]
+      taxonomies: ["category"]
     sheet_music:
       public: true
       has_archive: true

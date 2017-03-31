@@ -117,6 +117,14 @@ add_action('init', function() use($sapling) {
             'label' => __('Instrumentation'),
         ]
     );
+
+    register_taxonomy(
+        'publication_type',
+        'publication',
+        [
+            'label' => __('Publication Type'),
+        ]
+    );
 });
 
 add_action('widgets_init', function() use($sapling) {
@@ -168,6 +176,13 @@ add_action('wp_enqueue_scripts', function() use($sapling) {
     }
 });
 
+add_action('admin_menu', function(){
+    remove_meta_box('tagsdiv-album', 'recording', 'side');
+    remove_meta_box('tagsdiv-instrumentation', 'sheet_music', 'side');
+    remove_meta_box('tagsdiv-publication_type', 'publication', 'side');
+    remove_meta_box('categorydiv', 'publication', 'side');
+});
+
 add_action('acf/init', function(){
     $builder = new \Sapling\ACF\ACFBuilder();
     $builder->addOptionsPage('Theme Settings', 'Theme Settings', 'theme-settings', 'manage_options');
@@ -214,7 +229,7 @@ add_action('acf/init', function(){
         'param' => 'options_page',
         'operator' => '==',
         'value' => 'theme-settings',
-    ]]], 1);
+    ]]], [], 1);
 
     $header = new \Sapling\ACF\Fields\Image('header', 'Home Page header', 'header');
     $header->setRequired(true);
@@ -227,7 +242,7 @@ add_action('acf/init', function(){
         'param' => 'options_page',
         'operator' => '==',
         'value' => 'theme-settings',
-    ]]], 2);
+    ]]], [], 2);
 
     $footer = new \Sapling\ACF\Fields\Number('contact_form_id', 'Contact Form ID', 'contact_form_id');
     $footer->setRequired(true);
@@ -238,7 +253,7 @@ add_action('acf/init', function(){
         'param' => 'post_type',
         'operator' => '==',
         'value' => 'recording',
-    ]]], 0);
+    ]]], [], 0);
 
     $mp3 = new \Sapling\ACF\Fields\File('recording_mp3', 'MP3', 'recording_mp3');
     $mp3->setRequired(true);
@@ -271,7 +286,7 @@ add_action('acf/init', function(){
         'param' => 'post_type',
         'operator' => '==',
         'value' => 'sheet_music',
-    ]]], 0);
+    ]]], [], 0);
 
     $instrumentation = new \Sapling\ACF\Fields\Taxonomy('sheet_instrumentation', 'Instrumentation', 'sheet_instrumentation');
     $instrumentation->setTaxonomy('album');
@@ -293,6 +308,49 @@ add_action('acf/init', function(){
         'id' => '',
     ]);
     $url->register('sheet_music');
+
+    // Publications
+    $builder->addLocalFieldGroup('publication', 'Publication', [], [[[
+        'param' => 'post_type',
+        'operator' => '==',
+        'value' => 'publication',
+    ]]], [], 0);
+
+    $type = new \Sapling\ACF\Fields\Taxonomy('publish_type', 'Type of Publication', 'publish_type');
+    $type->setTaxonomy('publish_type');
+    $type->setFieldType('select');
+    $type->setFormat('object');
+    $type->setAddTerm(true);
+    $type->register('publication');
+
+    $type = new \Sapling\ACF\Fields\Taxonomy('publish_category', 'Category', 'publish_category');
+    $type->setTaxonomy('category');
+    $type->setFieldType('checkbox');
+    $type->setFormat('object');
+    $type->setAddTerm(true);
+    $type->register('publication');
+
+    $publisher = new \Sapling\ACF\Fields\Text('publish_publisher', 'Publisher', 'publish_publisher');
+    $publisher->setRequired(true);
+    $publisher->setWrapper([
+        'width' => '33',
+        'class' => '',
+        'id' => '',
+    ]);
+    $publisher->register('publication');
+
+    //@TODO date
+
+    $url = new \Sapling\ACF\Fields\URL('publish_url', 'Publish URL', 'publish_url');
+    $url->setRequired(true);
+    $url->setWrapper([
+        'width' => '34',
+        'class' => '',
+        'id' => '',
+    ]);
+    $url->register('publication');
+
+
 });
 
 add_filter('excerpt_more', function ($more) {
