@@ -18,7 +18,28 @@ parameters:
   menus:
     primary: "Primary Menu"
     footer: "Footer Menu"
-  post_types: []
+  post_types:
+    publication:
+      public: true
+      has_archive: true
+      labels: {name: "Publications", singular_name: "Publication"}
+      menu_position: 6
+      menu_icon: "dashicons-portfolio"
+      supports: ["title", "editor", "thumbnail"]
+    sheet_music:
+      public: true
+      has_archive: true
+      labels: {name: "Sheet Music", singular_name: "Sheet Music"}
+      menu_position: 6
+      menu_icon: "dashicons-playlist-audio"
+      supports: ["title", "editor", "thumbnail"]
+    recording:
+      public: true
+      has_archive: true
+      labels: {name: "Recordings", singular_name: "Recording"}
+      menu_position: 6
+      menu_icon: "dashicons-format-audio"
+      supports: ["title", "editor", "thumbnail"]
   remove_post_type_support: []
   post_type_support: []
   remove_sidebars: []
