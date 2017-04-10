@@ -61,6 +61,7 @@ add_action('after_setup_theme', function() use($sapling) {
         "depth" => 2,
         "echo" => false,
     ]);
+    
     $footer_menu = wp_nav_menu([
         "menu_class" => "vertical medium-horizontal menu align-center",
         "items_wrap" => '<ul id="%1$s" class="%2$s">%3$s</ul>',
@@ -68,6 +69,15 @@ add_action('after_setup_theme', function() use($sapling) {
         "depth" => 1,
         "echo" => false,
     ]);
+
+    ob_start();
+    wp_head();
+    $head = ob_get_clean();
+
+    ob_start();
+    wp_footer();
+    $foot = ob_get_clean();
+
     $twig = $sapling->get('twig.environment');
     $twig->addGlobal('primary_menu', $primary_menu);
     $twig->addGlobal('footer_menu', $footer_menu);
@@ -76,6 +86,8 @@ add_action('after_setup_theme', function() use($sapling) {
     $twig->addGlobal('recordings_link', get_post_type_archive_link('recording'));
     $twig->addGlobal('sheet_music_link', get_post_type_archive_link('sheet_music'));
     $twig->addGlobal('posts_link', get_post_type_archive_link('post'));
+    $twig->addGlobal('head', $head);
+    $twig->addGlobal('foot', $foot);
 
     //var_dump(get_post_type_archive_link('publication'));exit;
 });
