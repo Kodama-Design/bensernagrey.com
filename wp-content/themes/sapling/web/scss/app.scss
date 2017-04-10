@@ -34,6 +34,17 @@ $fa-font-path: "../libs/font-awesome/fonts";
   margin-right: auto;
 }
 
+// headings
+h2 {
+  .small.button {
+    font-size: rem-calc(12px);
+    color: $white;
+    margin-bottom: rem-calc(8px);
+    margin-left: $global-margin;
+    padding: rem-calc(8px) rem-calc(16px);
+  }
+}
+
 // foundation accordion menu
 .is-accordion-submenu-parent > a::after {
   content: "\f067";

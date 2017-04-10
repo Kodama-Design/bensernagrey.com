@@ -5,13 +5,6 @@
     font-size: rem-calc(32px);
     text-transform: uppercase;
     margin-bottom: $global-margin;
-    .small.button {
-      font-size: rem-calc(12px);
-      color: $white;
-      margin-bottom: rem-calc(8px);
-      margin-left: $global-margin;
-      padding: rem-calc(8px) rem-calc(16px);
-    }
   }
   .row {
     margin: 0 auto;
