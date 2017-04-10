@@ -107,6 +107,7 @@ add_action('init', function() use($sapling) {
         'recording',
         [
             'label' => __('Album'),
+            'hierarchical' => false,
         ]
     );
 
@@ -115,6 +116,7 @@ add_action('init', function() use($sapling) {
         'sheet_music',
         [
             'label' => __('Instrumentation'),
+            'hierarchical' => false,
         ]
     );
 
@@ -123,6 +125,7 @@ add_action('init', function() use($sapling) {
         'publication',
         [
             'label' => __('Publication Type'),
+            'hierarchical' => false,
         ]
     );
 });
@@ -300,7 +303,7 @@ add_action('acf/init', function(){
     ]);
     $instrumentation->register('sheet_music');
 
-    $url = new \Sapling\ACF\Fields\URL('sheet_url', 'Track number', 'sheet_url');
+    $url = new \Sapling\ACF\Fields\Number('sheet_url', 'URL', 'sheet_url');
     $url->setRequired(true);
     $url->setWrapper([
         'width' => '50',
@@ -317,7 +320,7 @@ add_action('acf/init', function(){
     ]]], [], 0);
 
     $type = new \Sapling\ACF\Fields\Taxonomy('publish_type', 'Type of Publication', 'publish_type');
-    $type->setTaxonomy('publish_type');
+    $type->setTaxonomy('publication_type');
     $type->setFieldType('select');
     $type->setFormat('object');
     $type->setAddTerm(true);
@@ -339,7 +342,14 @@ add_action('acf/init', function(){
     ]);
     $publisher->register('publication');
 
-    //@TODO date
+    $date = new \Sapling\ACF\Fields\Date('publish_date', 'Date', 'publish_date');
+    $date->setRequired(true);
+    $date->setWrapper([
+        'width' => '33',
+        'class' => '',
+        'id' => '',
+    ]);
+    $date->register('publication');
 
     $url = new \Sapling\ACF\Fields\URL('publish_url', 'Publish URL', 'publish_url');
     $url->setRequired(true);

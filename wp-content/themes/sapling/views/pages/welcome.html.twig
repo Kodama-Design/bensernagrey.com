@@ -34,6 +34,25 @@
         <header class="hero">
             <img src="{{ get_field("header", "option").sizes.hero }}" alt="{{ get_field("header", "option").title }}" />
         </header>
+
+        <section class="publications-teasers">
+            <div class="row">
+                <div class="small-12 columns">
+                    <h2>Publications</h2>
+                </div>
+            </div>
+                <div class="row small-up-1 medium-up-2 large-up-3">
+                    {% for publication in publications %}
+                        <div class="column">
+                            <a href="{{ publication.link }}" title="{{ publication.title }}" class="publication-teaser">
+                                {{ publication.thumbnail }}
+                                <h3>{{ publication.title }}</h3>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+        </section>
+
         <section class="recordings-preview">
             <div class="row">
                 <div class="small-12 columns">
@@ -52,7 +71,8 @@
                 {% endfor %}
             </div>
         </section>
-        <section class="posts-teaser">
+
+        <section class="posts-teasers">
             <div class="row">
                 <div class="small-12 columns">
                     <h2>Blog</h2>
@@ -69,6 +89,7 @@
                 </div>
             {% endfor %}
         </section>
+
         <footer class="contact">
             <div class="row align-center">
                 <div class="small-12 medium-10 large-8 columns">
@@ -77,6 +98,7 @@
                 </div>
             </div>
         </footer>
+
         <footer class="copyright">
             <div class="row">
                 <div class="small-12 columns">

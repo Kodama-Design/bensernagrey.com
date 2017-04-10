@@ -1,0 +1,42 @@
+.publications-teasers {
+  padding: $global-padding*2 0;
+  h2 {
+    color: $anchor-color;
+    font-size: rem-calc(32px);
+    text-transform: uppercase;
+    margin-bottom: $global-margin;
+  }
+  .row {
+    margin: 0 auto;
+  }
+  .publication-teaser {
+    position: relative;
+    text-align: center;
+    display: block;
+    margin-bottom: $global-margin*2;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0,0,0,0.6);
+      transition: background-color 500ms;
+    }
+    &:hover:before {
+      background-color: rgba(0,0,0,0.1);
+    }
+    img {
+      width: 100%;
+    }
+    h3 {
+      position: absolute;
+      top: 50%;
+      left: $global-padding;
+      right: $global-padding;
+      transform: translateY(-50%);
+      color: $white;
+    }
+  }
+}

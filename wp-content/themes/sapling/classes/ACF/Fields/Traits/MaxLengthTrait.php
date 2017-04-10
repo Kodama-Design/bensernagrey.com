@@ -6,12 +6,12 @@ trait MaxLengthTrait
     /**
      * @var int maximum number of characters
      */
-    protected $max_length = 0;
+    protected $max_length = '';
 
     /**
      * @return int maximum number of characters
      */
-    public function getMaxLength(): int
+    public function getMaxLength()
     {
         return $this->max_length;
     }

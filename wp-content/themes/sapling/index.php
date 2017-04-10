@@ -7,8 +7,24 @@ ob_start();
 wp_footer();
 $foot = ob_get_clean();
 
-// recordings
+// publications
+$publications = [];
+$args = array(
+    'numberposts'	=> 4,
+    'post_type'		=> 'publication',
+);
+$the_query = new WP_Query($args);
+while($the_query->have_posts()) {
+    $the_query->the_post();
+    $publications[] = [
+        'title' => get_the_title(),
+        'thumbnail' => get_the_post_thumbnail(),
+        'link' => get_the_permalink(),
+    ];
+}
+wp_reset_query();
 
+// recordings
 $recordings = [];
 $args = array(
     'numberposts'	=> 4,
@@ -21,9 +37,9 @@ while($the_query->have_posts()) {
     $recordings[] = [
         'title' => get_the_title(),
         'file' => get_field('recording_mp3')['url'],
+        'link' => get_the_permalink(),
     ];
 }
-var_dump($recordings);
 wp_reset_query();
 
 // posts
@@ -42,4 +58,5 @@ echo $twig->render('pages/welcome.html.twig', [
     'foot' => $foot,
     'posts' => $posts,
     'recordings' => $recordings,
+    'publications' => $publications,
 ]);
