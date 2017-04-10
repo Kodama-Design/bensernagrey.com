@@ -61,7 +61,7 @@ add_action('after_setup_theme', function() use($sapling) {
         "depth" => 2,
         "echo" => false,
     ]);
-    
+
     $footer_menu = wp_nav_menu([
         "menu_class" => "vertical medium-horizontal menu align-center",
         "items_wrap" => '<ul id="%1$s" class="%2$s">%3$s</ul>',
@@ -79,13 +79,10 @@ add_action('after_setup_theme', function() use($sapling) {
     $foot = ob_get_clean();
 
     $twig = $sapling->get('twig.environment');
+    $twig->addGlobal('site_url', get_site_url());
     $twig->addGlobal('primary_menu', $primary_menu);
     $twig->addGlobal('footer_menu', $footer_menu);
     $twig->addGlobal('contact_form', gravity_form(1, false, false, false, null, false, 49, false));
-    $twig->addGlobal('publications_link', get_post_type_archive_link('publication'));
-    $twig->addGlobal('recordings_link', get_post_type_archive_link('recording'));
-    $twig->addGlobal('sheet_music_link', get_post_type_archive_link('sheet_music'));
-    $twig->addGlobal('posts_link', get_post_type_archive_link('post'));
     $twig->addGlobal('head', $head);
     $twig->addGlobal('foot', $foot);
 
