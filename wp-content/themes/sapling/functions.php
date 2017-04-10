@@ -18,8 +18,8 @@ if($sapling_config_cache->isFresh()) {
 } else {
     $sapling = new ContainerBuilder();
     $sapling->setParameter('WP_DEBUG', WP_DEBUG);
-    $sapling->setParameter('theme_dir', get_stylesheet_directory() . '/');
-    $sapling->setParameter('theme_uri', get_stylesheet_directory_uri() . '/');
+    $sapling->setParameter('theme_dir', get_stylesheet_directory());
+    $sapling->setParameter('theme_uri', get_stylesheet_directory_uri());
     $loader = new YamlFileLoader($sapling, new FileLocator(__DIR__));
     $loader->load('config.sapling.yml');
     $sapling->compile();
@@ -72,6 +72,12 @@ add_action('after_setup_theme', function() use($sapling) {
     $twig->addGlobal('primary_menu', $primary_menu);
     $twig->addGlobal('footer_menu', $footer_menu);
     $twig->addGlobal('contact_form', gravity_form(1, false, false, false, null, false, 49, false));
+    $twig->addGlobal('publications_link', get_post_type_archive_link('publication'));
+    $twig->addGlobal('recordings_link', get_post_type_archive_link('recording'));
+    $twig->addGlobal('sheet_music_link', get_post_type_archive_link('sheet_music'));
+    $twig->addGlobal('posts_link', get_post_type_archive_link('post'));
+
+    //var_dump(get_post_type_archive_link('publication'));exit;
 });
 
 add_action('init', function() use($sapling) {

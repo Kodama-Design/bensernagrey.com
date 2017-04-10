@@ -31,14 +31,17 @@
         </div>
     </div>
     <div class="columns" id="center-bar">
+        {% block header %}
         <header class="hero">
             <img src="{{ get_field("header", "option").sizes.hero }}" alt="{{ get_field("header", "option").title }}" />
         </header>
+        {% endblock %}
 
+        {% block content %}
         <section class="publications-teasers">
             <div class="row">
                 <div class="small-12 columns">
-                    <h2>Publications</h2>
+                    <h2>Publications <a href="{{ publications_link }}" class="small primary button">View all</a></h2>
                 </div>
             </div>
                 <div class="row small-up-1 medium-up-2 large-up-3">
@@ -56,7 +59,7 @@
         <section class="recordings-preview">
             <div class="row">
                 <div class="small-12 columns">
-                    <h2>Recordings</h2>
+                    <h2>Recordings <a href="{{ recordings_link }}" class="small primary button">View all</a></h2>
                 </div>
             </div>
             <div class="row small-up-1 medium-up-2">
@@ -75,7 +78,7 @@
         <section class="posts-teasers">
             <div class="row">
                 <div class="small-12 columns">
-                    <h2>Blog</h2>
+                    <h2>Blog <a href="{{ posts_link }}" class="small primary button">View all</a></h2>
                 </div>
             </div>
             {% for post in posts %}
@@ -89,7 +92,9 @@
                 </div>
             {% endfor %}
         </section>
+        {% endblock %}
 
+        {% block contact %}
         <footer class="contact">
             <div class="row align-center">
                 <div class="small-12 medium-10 large-8 columns">
@@ -98,7 +103,9 @@
                 </div>
             </div>
         </footer>
+        {% endblock %}
 
+        {% block footer %}
         <footer class="copyright">
             <div class="row">
                 <div class="small-12 columns">
@@ -109,6 +116,7 @@
                 </div>
             </div>
         </footer>
+        {% endblock %}
     </div>
 </div>
     {{ foot }}
