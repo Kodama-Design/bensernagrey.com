@@ -98,3 +98,11 @@ audio {
 .error404 .basic-content {
   text-align: center;
 }
+
+// main container
+#container {
+  display: block;
+  @include breakpoint(750px) {
+    display: flex;
+  }
+}

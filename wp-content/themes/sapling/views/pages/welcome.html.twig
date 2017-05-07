@@ -4,7 +4,7 @@
     {{ header() }}
 </head>
 <body {{ body_class() }}>
-<div class="expanded collapse row">
+<div class="expanded collapse row" id="container">
     <div class="shrink columns" id="left-bar">
         <div id="profile" class="text-center">
             <img src="{{ get_field('headshot', 'option').url }}" alt="{{ get_field('headshot', 'option').title }}" />
