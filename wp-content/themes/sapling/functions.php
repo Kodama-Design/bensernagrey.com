@@ -70,21 +70,11 @@ add_action('after_setup_theme', function() use($sapling) {
         "echo" => false,
     ]);
 
-    ob_start();
-    wp_head();
-    $head = ob_get_clean();
-
-    ob_start();
-    wp_footer();
-    $foot = ob_get_clean();
-
     $twig = $sapling->get('twig.environment');
     $twig->addGlobal('site_url', get_site_url());
     $twig->addGlobal('primary_menu', $primary_menu);
     $twig->addGlobal('footer_menu', $footer_menu);
     $twig->addGlobal('contact_form', gravity_form(1, false, false, false, null, false, 49, false));
-    $twig->addGlobal('head', $head);
-    $twig->addGlobal('foot', $foot);
     $twig->addGlobal('date_format', get_option('date_format'));
 });
 
