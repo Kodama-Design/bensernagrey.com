@@ -1,0 +1,31 @@
+{% extends "pages/welcome.html.twig" %}
+{% block content %}
+
+    <section class="sheet_music-teasers">
+        <div class="row">
+            <div class="small-12 columns">
+                <h2>Sheet Music</h2>
+            </div>
+        </div>
+        {% for sheet_music in posts %}
+            <div class="post-teaser">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h3>{{ sheet_music.title }}</h3>
+                        <h4>
+                            Instrumentation:
+                            <small>
+                                {% for instrument in sheet_music.instrumentation %}
+                                    {{ instrument.name }}{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                            </small>
+                        </h4>
+                        <a href="{{ sheet_music.url }}" class="primary button" target="_blank"><i class="fa fa-usd"></i> Buy</a>
+                        <div class="description">{{ sheet_music.description }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+    {% include 'leaves/pagination.html.twig' %}
+{% endblock %}

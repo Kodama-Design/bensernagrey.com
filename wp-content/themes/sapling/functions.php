@@ -85,8 +85,6 @@ add_action('after_setup_theme', function() use($sapling) {
     $twig->addGlobal('contact_form', gravity_form(1, false, false, false, null, false, 49, false));
     $twig->addGlobal('head', $head);
     $twig->addGlobal('foot', $foot);
-
-    //var_dump(get_post_type_archive_link('publication'));exit;
 });
 
 add_action('init', function() use($sapling) {
@@ -108,6 +106,7 @@ add_action('init', function() use($sapling) {
     foreach ($sapling->getParameter('post_types') as $post_type => $args) {
         register_post_type($post_type, $args);
     }
+    flush_rewrite_rules();
 
     foreach ($sapling->getParameter('remove_post_type_support') as $post_type => $args) {
         remove_post_type_support($post_type, $args);
@@ -159,6 +158,8 @@ add_action('widgets_init', function() use($sapling) {
 });
 
 add_action('wp_enqueue_scripts', function() use($sapling) {
+    if (is_admin()) return;
+    
     foreach ($sapling->getParameter('remove_stylesheets') as $stylesheet) {
         wp_deregister_style($stylesheet);
     }
@@ -307,8 +308,8 @@ add_action('acf/init', function(){
     ]]], [], 0);
 
     $instrumentation = new \Sapling\ACF\Fields\Taxonomy('sheet_instrumentation', 'Instrumentation', 'sheet_instrumentation');
-    $instrumentation->setTaxonomy('album');
-    $instrumentation->setFieldType('select');
+    $instrumentation->setTaxonomy('instrumentation');
+    $instrumentation->setFieldType('checkbox');
     $instrumentation->setFormat('object');
     $instrumentation->setAddTerm(true);
     $instrumentation->setWrapper([
@@ -318,7 +319,7 @@ add_action('acf/init', function(){
     ]);
     $instrumentation->register('sheet_music');
 
-    $url = new \Sapling\ACF\Fields\Number('sheet_url', 'URL', 'sheet_url');
+    $url = new \Sapling\ACF\Fields\URL('sheet_url', 'URL', 'sheet_url');
     $url->setRequired(true);
     $url->setWrapper([
         'width' => '50',

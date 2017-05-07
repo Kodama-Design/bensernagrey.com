@@ -221,6 +221,10 @@ class WordPressTwigExtension extends Twig_Extension
             return ob_get_clean();
         }, []);
 
+        $functions[] = new \Twig_SimpleFunction('pagenum_link', function($pagenum = 1, $escape = true){
+            return get_pagenum_link($pagenum, $escape);
+        }, []);
+
         return $functions;
     }
 

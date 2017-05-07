@@ -1,0 +1,23 @@
+{% if pages > 1 %}
+    <section class="pagination">
+        <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+            {% if current_page == 1 %}
+                <li class="disabled" aria-label="First page">First</li>
+            {% else %}
+                <li><a href="{{ pagenum_link(1) }}" aria-label="First page">First</a></li>
+            {% endif %}
+            {% for i in 1..pages %}
+                <li>
+                    <a href="{{ pagenum_link(i) }}" {% if current_page == i %}class="current"{% endif %}>
+                        {{ i }}
+                    </a>
+                </li>
+            {% endfor %}
+            {% if current_page == pages %}
+                <li class="disabled" aria-label="Last page">Last</li>
+            {% else %}
+                <li><a href="{{ pagenum_link(pages) }}" aria-label="Last page">Last</a></li>
+            {% endif %}
+        </ul>
+    </section>
+{% endif %}

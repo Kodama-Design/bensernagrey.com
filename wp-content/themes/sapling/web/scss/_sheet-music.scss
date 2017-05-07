@@ -1,0 +1,6 @@
+.sheet_music-teasers{
+  @extend .posts-teasers;
+  .primary.button {
+    display: inline-block;
+  }
+}

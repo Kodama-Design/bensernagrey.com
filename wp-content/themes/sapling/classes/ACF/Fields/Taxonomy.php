@@ -13,7 +13,7 @@ class Taxonomy extends Base
     /** @var string Specify the taxonomy to select terms from */
     protected $taxonomy = 'category';
     protected $field_type = 'checkbox';
-    protected $load_save_terms = 0;
+    protected $load_save_terms = 1;
     protected $format = 'id';
     protected $add_term = 1;
 
