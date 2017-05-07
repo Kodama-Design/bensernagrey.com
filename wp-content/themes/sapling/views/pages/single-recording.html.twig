@@ -1,0 +1,15 @@
+{% extends 'pages/welcome.html.twig' %}
+{% block content %}
+    <section class="single-recording">
+        <div class="row">
+            <div class="small-12 columns">
+                <h1>{{ title }}</h1>
+                <div class="description">{{ content }}</div>
+                <audio controls>
+                    <source src="{{ file }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </div>
+    </section>
+{% endblock %}

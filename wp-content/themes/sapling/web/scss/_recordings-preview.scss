@@ -9,10 +9,10 @@
   h3 {
     font-size: rem-calc(26px);
     font-weight: $global-weight-normal;
-    margin-bottom: 0;
+    margin-bottom: $global-margin/2;// needs some because text would have line-height to add spacing
   }
-  audio {
-    width: 100%;
+  a {
+    display: inline-block;
     margin-bottom: $global-margin;
   }
   .row {

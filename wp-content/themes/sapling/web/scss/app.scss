@@ -15,6 +15,9 @@ $fa-font-path: "../libs/font-awesome/fonts";
 @import "publications-teasers";
 @import "posts-teaser";
 @import "sheet-music";
+@import "post";
+@import "recording";
+@import "publication";
 
 
 .alignleft {
@@ -45,6 +48,11 @@ h2 {
     margin-left: $global-margin;
     padding: rem-calc(8px) rem-calc(16px);
   }
+}
+
+// audio objects
+audio {
+  width: 100%;
 }
 
 // foundation accordion menu

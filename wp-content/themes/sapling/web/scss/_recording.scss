@@ -1,0 +1,12 @@
+section.single-recording {
+  padding: $global-padding*2 0;
+  .row {
+    margin: 0 auto;
+  }
+  h1 {
+    color: get-color(primary);
+  }
+  .description {
+    margin-bottom: $global-margin;
+  }
+}

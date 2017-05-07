@@ -1,0 +1,14 @@
+section.single-publication {
+  padding: $global-padding*2 0;
+  .row {
+    margin: 0 auto;
+  }
+  h1 {
+    color: get-color(primary);
+  }
+  .details {
+    background-color: $light-gray;
+    padding: $global-padding;
+    margin: $global-margin auto;
+  }
+}

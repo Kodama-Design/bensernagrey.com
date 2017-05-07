@@ -1,0 +1,17 @@
+{% extends 'pages/welcome.html.twig' %}
+{% block content %}
+    <section class="single-publication">
+        <div class="row">
+            <div class="small-12 columns">
+                <h1>{{ title }}</h1>
+                <div class="description">{{ content }}</div>
+            </div>
+        </div>
+        <div class="details row small-up-1 medium-up-2 large-up-4">
+            <div class="column"><b>Publisher: </b> {{ publisher }}</div>
+            <div class="column"><b>Publish Date: </b> {{ date | date(date_format)}}</div>
+            <div class="column"><b>URL: </b> {% if url %}<a href="{{ url }}" title="{{ title }}" target="_blank">{{ url }}</a>{% else %}N/A{% endif %}</div>
+            <div class="column"><b>Type: </b> {{ type.name }}</div>
+        </div>
+    </section>
+{% endblock %}

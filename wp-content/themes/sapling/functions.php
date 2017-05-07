@@ -85,6 +85,7 @@ add_action('after_setup_theme', function() use($sapling) {
     $twig->addGlobal('contact_form', gravity_form(1, false, false, false, null, false, 49, false));
     $twig->addGlobal('head', $head);
     $twig->addGlobal('foot', $foot);
+    $twig->addGlobal('date_format', get_option('date_format'));
 });
 
 add_action('init', function() use($sapling) {
@@ -288,7 +289,7 @@ add_action('acf/init', function(){
     ]);
     $track->register('recordings');
 
-    $album = new \Sapling\ACF\Fields\Taxonomy('recording_album', 'album', 'recording_album');
+    $album = new \Sapling\ACF\Fields\Taxonomy('recording_album', 'Album', 'recording_album');
     $album->setTaxonomy('album');
     $album->setFieldType('select');
     $album->setFormat('object');
@@ -368,7 +369,6 @@ add_action('acf/init', function(){
     $date->register('publication');
 
     $url = new \Sapling\ACF\Fields\URL('publish_url', 'Publish URL', 'publish_url');
-    $url->setRequired(true);
     $url->setWrapper([
         'width' => '34',
         'class' => '',
