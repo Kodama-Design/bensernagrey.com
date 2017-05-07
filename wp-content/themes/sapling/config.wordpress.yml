@@ -14,6 +14,7 @@ parameters:
   theme_supports:
     - "post-thumbnails"
     - "html5"
+    - "title-tag"
   remove_menus: []
   menus:
     primary: "Primary Menu"
