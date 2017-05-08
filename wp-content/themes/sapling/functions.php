@@ -373,3 +373,7 @@ add_filter('excerpt_more', function ($more) {
     global $post;
     return '... <a href="'. get_permalink($post->ID) . '"> Read More</a>';
 });
+
+add_filter('wpseo_metabox_prio', function(){
+    return 'low';
+});
