@@ -20,8 +20,6 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-//define('WP_CACHE', true); //Added by WP-Cache Manager
-define( 'WPCACHEHOME', 'C:\xampp\htdocs\bensernagrey.com\wp-content\plugins\wp-super-cache/' ); //Added by WP-Cache Manager
 define('DB_NAME', 'bensernagrey');
 
 /** MySQL database username */
@@ -79,7 +77,7 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 /* That's all, stop editing! Happy blogging. */
 
