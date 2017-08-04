@@ -142,7 +142,7 @@ add_action('widgets_init', function() use($sapling) {
 
     foreach ($sapling->getParameter('sidebars') as $sidebar) {
         if(isset($sidebar['name'])) {
-            $sidebar['name'] == __($sidebar['name'], 'sapling');
+            $sidebar['name'] = __($sidebar['name'], 'sapling');
         }
         register_sidebar($sidebar);
     }

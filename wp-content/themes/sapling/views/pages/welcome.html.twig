@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
     {{ header() }}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-98710706-5', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 </head>
 <body {{ body_class() }}>
 <div class="expanded collapse row" id="container">
@@ -37,61 +47,67 @@
         {% endblock %}
 
         {% block content %}
-        <section class="publications-teasers">
-            <div class="row">
-                <div class="small-12 columns">
-                    <h2>Publications <a href="{{ publications_archive }}" class="small primary button">View all</a></h2>
+        {% if publications %}
+            <section class="publications-teasers">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h2>Publications <a href="{{ publications_archive }}" class="small primary button">View all</a></h2>
+                    </div>
                 </div>
-            </div>
-                <div class="row small-up-1 medium-up-2 large-up-3">
-                    {% for publication in publications %}
+                    <div class="row small-up-1 medium-up-2 large-up-3">
+                        {% for publication in publications %}
+                            <div class="column">
+                                <a href="{{ publication.link }}" title="{{ publication.title }}" class="publication-teaser">
+                                    {{ publication.thumbnail }}
+                                    <h3>{{ publication.title }}</h3>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+            </section>
+        {% endif %}
+
+        {% if recordings %}
+            <section class="recordings-preview">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h2>Recordings <a href="{{ recordings_archive }}" class="small primary button">View all</a></h2>
+                    </div>
+                </div>
+                <div class="row small-up-1 medium-up-2">
+                    {% for recording in recordings %}
                         <div class="column">
-                            <a href="{{ publication.link }}" title="{{ publication.title }}" class="publication-teaser">
-                                {{ publication.thumbnail }}
-                                <h3>{{ publication.title }}</h3>
-                            </a>
+                            <h3>{{ recording.title }}</h3>
+                            <audio controls>
+                                <source src="{{ recording.file }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <a href="{{ recording.link }}">More Info</a>
                         </div>
                     {% endfor %}
                 </div>
-        </section>
+            </section>
+        {% endif %}
 
-        <section class="recordings-preview">
-            <div class="row">
-                <div class="small-12 columns">
-                    <h2>Recordings <a href="{{ recordings_archive }}" class="small primary button">View all</a></h2>
-                </div>
-            </div>
-            <div class="row small-up-1 medium-up-2">
-                {% for recording in recordings%}
-                    <div class="column">
-                        <h3>{{ recording.title }}</h3>
-                        <audio controls>
-                            <source src="{{ recording.file }}" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                        <a href="{{ recording.link }}">More Info</a>
+        {% if posts %}
+            <section class="posts-teasers">
+                <div class="row">
+                    <div class="small-12 columns">
+                        <h2>Blog <a href="{{ posts_archive }}" class="small primary button">View all</a></h2>
                     </div>
-                {% endfor %}
-            </div>
-        </section>
-
-        <section class="posts-teasers">
-            <div class="row">
-                <div class="small-12 columns">
-                    <h2>Blog <a href="{{ posts_archive }}" class="small primary button">View all</a></h2>
                 </div>
-            </div>
-            {% for post in posts %}
-                <div class="post-teaser">
-                    <div class="row">
-                        <div class="small-12 columns">
-                            <h3>{{ post.title }}</h3>
-                            {{ post.excerpt }}
+                {% for post in posts %}
+                    <div class="post-teaser">
+                        <div class="row">
+                            <div class="small-12 columns">
+                                <h3>{{ post.title }}</h3>
+                                {{ post.excerpt }}
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
-        </section>
+                {% endfor %}
+            </section>
+        {% endif %}
         {% endblock %}
 
         {% block contact %}
