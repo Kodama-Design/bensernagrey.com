@@ -23,10 +23,10 @@
 define('DB_NAME', 'bensernagrey');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'bensernagrey');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', '2HmGRYa6tJgrdqGv');
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
@@ -46,14 +46,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         ',lF4S!TaDn79*B?$K 82! rGq1TrRh@mJ<x-IIbwEMaXC@k/-j,ss<[C4qpjW?I=');
-define('SECURE_AUTH_KEY',  'omIaPxCyueDu(P/*Vd$v20 %xOIc.60XG9p=An=~>iM,Q^@BsTyFM4J}7?ZieP`.');
-define('LOGGED_IN_KEY',    'dGN[|.$,a2{t6fP%9^Z)!!UN*b;p9V=!hhY1PVDELAX#5fkb`;]$cK_Pr!hIE0UD');
-define('NONCE_KEY',        'W7<ZY F^Uc?rjbH%<2e.;&/6F5-0wCx0)fC8kN)deB8Sm+BEz:h7=KJeVa}e/DD<');
-define('AUTH_SALT',        'Awkf=p3&00_]7|rO1-6#;LIf%920suUlvFRS`WGhw3 G{10A=zcj~doIkQlB#UVg');
-define('SECURE_AUTH_SALT', ',tC0DxG+3.8;&IyRfCtP@3E&|Nr*;@_4i&;*asA<HnE`jeB#Dl`|c7G#nXz^vm.B');
-define('LOGGED_IN_SALT',   'A3X&WiE9KV6aTTTc*?M6h}1x&<q0lRqhNC2p_qXhhe$9e~lVhtnQ}SGi2F_1^0aT');
-define('NONCE_SALT',       '2@%RweqL?){/o3$ZWXa+!($VM20s.|ZiP_En3hY2w}Wr{WO5F3/QM;:y*tU.f~/>');
+define('AUTH_KEY',         'X%.raE-G]X?|*Fd[gvSfcCIPL;=-iiV-[<Kiu4r=$we7yg8Bhj7i3{#:CZUd$3|~');
+define('SECURE_AUTH_KEY',  '~F2rkE&2@;A7RfMC R#~DJ5El0E#lC5Q?aPj;qnJqS-`c5e*jCA~1tJ+JA[vlbma');
+define('LOGGED_IN_KEY',    '8w;1$I3~.}oF?G?^;%}6o?<2sqXA hjiXXAT6?7w?@GnH0tdm(^{1I^/.K4Y0brR');
+define('NONCE_KEY',        'ps 7vh>2fw[/Ye/)hMc9XO6z*;M%U5/eL;*H #WJ RmD?m<{==U{%mTuC!AVqj{V');
+define('AUTH_SALT',        'gXpzkK@w6|F;<,D@JA|u|M!K[by~h|sCPG#R8+ *0G*Vnshw1QE&{Z22!R1>04f;');
+define('SECURE_AUTH_SALT', ')#ly&S0yeR `]]LeZ%9?L>h@h$UTN9`6b`7XkugqUAd}N30zqEc][o]6#y4QTp?#');
+define('LOGGED_IN_SALT',   '!~|s2^e^>I<aZ=euaNHi$pp#mFA#x6!.E_ /tgCyF:8_v.:n!_H_msMJUdffq4nI');
+define('NONCE_SALT',       'M?S  NFe[Htl^+/q:A>B7(jAK!G!J^+ 3En:gC4a?PH=:tA1VZpBrH<EBj49q(7i');
 
 /**#@-*/
 
@@ -77,7 +77,7 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', true);
+define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
 

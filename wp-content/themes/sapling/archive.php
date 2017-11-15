@@ -26,7 +26,7 @@ while(have_posts()) {
     } elseif(is_post_type_archive('publication')) {
         $rows[] = [
             'title' => get_the_title(),
-            'thumbnail' => get_the_post_thumbnail() ?? "<img src='".get_stylesheet_directory_uri().'/web/imagesmin/typewriter.min.jpg'."'/>'",
+            'thumbnail' => get_the_post_thumbnail() ?: '<img src="'.get_stylesheet_directory_uri().'/web/imagesmin/typewriter.min.jpg'.'" />',
             'link' => get_the_permalink(),
         ];
         continue;
